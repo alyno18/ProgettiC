@@ -11,42 +11,26 @@ typedef struct{
     int bagagli;
 } datiPasseggero;
 
-int main(int argc, char const *argv[])
-{
-    int numLiberi = 0;
+int main(int argc, char const *argv[]){
     datiPasseggero passeggero={"","","",-1};
     FILE * fp = NULL;
 
     fp=fopen("clienti.dat","wb");
     
-    for(int j = 0; j < 150; j++)
-    {
-        int r = fread(&passeggero,sizeof(datiPasseggero),1,fp);
-        if(r == passeggero)
-        {
-            numLiberi++;
-        }
+    
+    printf("Inserisci numero posto (0 per finire): ");
+    scanf("%d", passeggero.numero);
+
+    while(passeggero.numero != 0){
+    
+        printf("Inserisci nome, cognome, nazionalità e numero bagagli del passeggero \n");
+        scanf("%19s %19s %29s %d", passeggero.nome, passeggero.cognome, passeggero.nazionalita, passeggero.bagagli);
+
+        fseek(fp,(passeggero.numero-1)*sizeof(datiPasseggero),SEEK_SET);
+        fwrite(&passeggero,sizeof(datiPasseggero),1,fp);
+
+        printf("Inserisci numero posto (0 per finire): ");
+        scanf("%d", passeggero.numero);
     }
-
-
-    if(numLiberi == 0)
-    {
-        printf("Volo pieno");
-    }
-    else
-    {
-        printf("Sono liberi %d posti \n", numLiberi);
-        for (int k = 0; k < numLiberi; k++)
-        {
-            printf("Inserisci nome, cognome, nazionalità e numero bagagli del passeggero \n");
-            scanf("%19s %19s %29s %d", passeggero.nome, passeggero.cognome, passeggero.nazionalita, passeggero.bagagli);
-            fseek(fp,(passeggero.numero-1)*sizeof(datiPasseggero),SEEK_SET);
-            fwrite(&passeggero,sizeof(datiPasseggero),1,fp);
-        }
-    }
-
-
-
-
     fclose(fp);
 }
