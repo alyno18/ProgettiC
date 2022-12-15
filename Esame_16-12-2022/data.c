@@ -2,7 +2,7 @@
 
 typedef struct{
     int giorno;
-    int mese,
+    int mese;
     int anno;
 } data;
 
@@ -11,6 +11,7 @@ int main(int argc, char const *argv[])
 {
     data d1;
     data d2;
+    double somma = 0;
 
     printf("Inserisci giorno mese e anno (0 0 0 per finire) \n");
     scanf("%d %d %d", &d1.giorno, &d1.mese, &d1.anno);
@@ -30,8 +31,4 @@ int main(int argc, char const *argv[])
             }
         }
     }
-}
-
-int giorniTrascorsi(data d1, data d2){
-    
 }
