@@ -32,9 +32,9 @@ int main(int argc, char const *argv[]){
         getchar();
 
         while(op != 5){
-            if(op == 1){ //preontazione
-                passeggero p;
-                int posto;
+            passeggero p;
+            int posto;
+            if(op == 1){ //prenotazione
                 printf("Inserisci numero posto (0 per finire): ");
                 scanf("%d", &posto);
 
@@ -61,8 +61,6 @@ int main(int argc, char const *argv[]){
                     scanf("%d", &posto);
                 }
             }else if(op == 2){ //verifica prenotazione
-                passeggero p;
-                int posto;
                 printf("Inserisci numero posto (0 per finire): ");
                 scanf("%d", &posto);
 
@@ -84,9 +82,6 @@ int main(int argc, char const *argv[]){
                     scanf("%d", &posto);
                 }
             }else if(op == 3){ //cancella prenotazione
-                passeggero vuoto={"","","",-1};
-                passeggero p;
-                int posto;
                 printf("Inserisci numero posto (0 per finire): ");
                 scanf("%d", &posto);
 
